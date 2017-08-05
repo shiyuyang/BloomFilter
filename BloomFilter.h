@@ -11,7 +11,7 @@ public:
 
 	BloomFilter(std::vector<uint64_t> bits, uint32_t hash_times);
 
-	std::vector<std::bitset<64>> &GetFilter();
+	std::vector<uint64_t> SerializeFilter();
 
 	void Add(std::string& key);
 

@@ -37,9 +37,13 @@ BloomFilter::BloomFilter(std::vector<uint64_t> bits, uint32_t hash_times) :_hash
 	}
 }
 
-std::vector<std::bitset<64>>& BloomFilter::GetFilter()
+std::vector<uint64_t> BloomFilter::SerializeFilter()
 {
-	return _bit_sets;
+	std::vector<uint64_t> serialized_vec;
+	for(auto it = _bit_sets.begin();it != _bit_sets.end(); it++){
+		serialized_vec.push_back(it->to_ullong());
+	}
+	return serialized_vec;
 }
 
 void BloomFilter::Add(std::string& key) {
