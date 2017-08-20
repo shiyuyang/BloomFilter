@@ -3,13 +3,18 @@
 #include <bitset>
 #include <vector>
 #include <cstdint>
-
 class BloomFilter
 {
 public:
 	BloomFilter(uint32_t bits_num, uint32_t hash_times);
 
 	BloomFilter(std::vector<uint64_t> bits, uint32_t hash_times);
+
+	void Init(std::vector<uint64_t> bits, uint32_t hash_times);
+
+	void Clear();
+
+    bool IsFull();
 
 	std::vector<uint64_t> SerializeFilter();
 
